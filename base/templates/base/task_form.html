@@ -1,0 +1,51 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h3>Task Form</h3>
+
+            <div class="mb-3">
+                <a href="{% url 'tasks' %}" class="btn btn-secondary">Go back</a>
+            </div>
+
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    {{ form.title.label_tag }} {{ form.title }}
+                    {% if form.title.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.title.errors.as_text }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.desc.label_tag }} {{ form.desc }}
+                    {% if form.desc.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.desc.errors.as_text }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.complete.label_tag }} {{ form.complete }}
+                    {% if form.complete.errors %}
+                        <div class="invalid-feedback">
+                            {{ form.complete.errors.as_text }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

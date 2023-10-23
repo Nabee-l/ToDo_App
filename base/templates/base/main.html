@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do App</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+      /* Global Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-dark .navbar-brand {
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+
+        color: lightcyan;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-dark .navbar-brand:hover {
+        color: #fff;
+      }
+
+      /* Custom styles for navbar-brand */
+      .navbar-brand {
+        font-size: 3.25rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      /* Other Elements Styles */
+      button {
+        cursor: pointer;
+      }
+
+      a {
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        color: #ffc107;
+        text-decoration: none;
+      }
+
+      /* Footer Styles */
+      .footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+      }
+
+      .footer a {
+        color: #ffc107;
+        transition: all 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Just Do It!</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+
+    <!-- Main content container -->
+    <div class="container mt-5 mb-5">
+      {% block content %}
+      <!-- The content from other templates will be injected here -->
+      {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-3">
+      <div class="container">
+        <p class="text-center mb-0">
+          © 2023 Just Do It! | All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Optional custom scripts -->
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
