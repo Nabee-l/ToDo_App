@@ -20,13 +20,80 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@500&display=swap" rel="stylesheet">
 
     <style>
+      /* Global Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .container {
+        
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Navbar Styles */
+      .navbar {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .navbar-dark .navbar-brand {
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+
+        color: lightcyan;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-dark .navbar-brand:hover {
+        color: #fff;
+      }
+
+      /* Custom styles for navbar-brand */
+      .navbar-brand {
+        font-size: 3.25rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      /* Other Elements Styles */
+      button {
+        cursor: pointer;
+      }
+
+      a {
+        color: #333;
+        transition: all 0.3s ease;
+      }
+
+      a:hover {
+        color: #ffc107;
+        text-decoration: none;
+      }
+
+      /* Footer Styles */
+      .footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+      }
+
+      .footer a {
+        color: #ffc107;
+        transition: all 0.3s ease;
+      }
+
+      .footer a:hover {
+        color: #fff;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
+    <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Just Do It!</a>
       <button
@@ -42,8 +109,10 @@
       </button>
     </nav>
 
+    <!-- Main content container -->
     <div class="container mt-5 mb-5">
       {% block content %}
+      <!-- The content from other templates will be injected here -->
       {% endblock %}
     </div>
 
@@ -56,5 +125,6 @@
       </div>
     </footer>
 
+  
   </body>
 </html>
