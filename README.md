@@ -243,5 +243,132 @@ The `login.html` template provides the structure for the login page of your appl
 - The template ensures that the login card will be centered on the page, thanks to the `justify-content-center` class.
 
 ---
+## `register.html`
+
+This HTML template file is responsible for rendering the registration page of the TODO app. It extends the `base/main.html` template to maintain a consistent look and feel throughout the application.
+
+### Template Structure:
+
+- **Extending 'base/main.html':** This line `{% extends 'base/main.html' %}` indicates that this template extends the `main.html` template, which likely includes the common structure and styles for your web pages, such as headers, footers, and navigation menus.
+
+- **`{% block content %}`:** This template includes a content block defined by `{% block content %}`. This block is used to insert the specific content unique to the registration page.
+
+### Page Elements:
+
+- **Card Layout:** The registration form is enclosed within a Bootstrap card element (`<div class="card">`). This card provides a structured layout for the registration form.
+
+- **Card Header:** The card header has a blue background (`bg-primary`) and white text (`text-white`). It displays the heading "Register."
+
+- **Registration Form:** The registration form is created using an HTML `<form>` element. The form action is currently empty (`action=""`) and should point to the URL where the registration logic is handled.
+
+- **CSRF Token:** `{% csrf_token %}` is used to include a CSRF token, which is necessary for form submissions to prevent cross-site request forgery attacks.
+
+- **Form Fields:** `{{ form.as_p }}` is used to render form fields. It will display form fields as paragraphs (`<p>`) with labels and input elements. The form fields likely include username, email, password, and password confirmation fields.
+
+- **Register Button:** The "Register" button (`<input type="submit">`) is used to submit the registration form. It has the Bootstrap styles for a primary button (`btn btn-primary btn-block`).
+
+- **Card Footer:** The card footer contains a link to the login page with the text "Already have an account? Login." The link is generated using `{% url 'Login' %}` and likely points to the login page URL.
+
+### Overall Purpose:
+
+This template is essential for the registration functionality of the TODO app. It provides the user interface for users to register for an account by filling out the required information.
+
+## `task_confirm_delete.html`
+
+This HTML template file is responsible for rendering the confirmation page for deleting a task in the TODO app. It extends the `base/main.html` template to maintain a consistent look and feel throughout the application.
+
+### Template Structure:
+
+- **Extending 'base/main.html':** This line `{% extends 'base/main.html' %}` indicates that this template extends the `main.html` template, which likely includes the common structure and styles for your web pages, such as headers, footers, and navigation menus.
+
+- **`{% block content %}`:** This template includes a content block defined by `{% block content %}`. This block is used to insert the specific content unique to the task deletion confirmation page.
+
+### Page Elements:
+
+- **Container and Row:** The content is enclosed within a Bootstrap container (`<div class="container mt-5">`) and a row (`<div class="row justify-content-center">`). This provides a centered and spaced layout for the page.
+
+- **"Go Back" Button:** The "Go back" button is a Bootstrap button (`<a href="{% url 'tasks' %}" class="btn btn-secondary">`) that allows users to cancel the deletion and return to the tasks list page. It is generated using `{% url 'tasks' %}` and likely points to the tasks list page URL.
+
+- **Card Layout:** The task deletion confirmation is presented in a Bootstrap card element (`<div class="card">`). The card body contains the deletion confirmation message.
+
+- **Confirmation Message:** The card's title is "Delete Confirmation," and the card text displays a confirmation message that includes the title of the task being deleted. The task title is likely retrieved using `{{ task.title }}`.
+
+- **Delete Form:** The deletion confirmation is implemented as a form (`<form>`) with the HTTP method set to POST. This form is used to submit the deletion request. It includes a CSRF token `{% csrf_token %}` for security.
+
+- **"Delete" Button:** The "Delete" button (`<input type="submit" value="Delete" class="btn btn-danger" />`) is used to confirm the task deletion. It has Bootstrap styles for a danger button, indicating a potentially irreversible action.
+
+### Overall Purpose:
+
+This template serves as the confirmation page for users who want to delete a specific task in the TODO app. It provides a user-friendly interface that allows users to confirm their intent to delete a task or cancel the action and go back to the task list.
+## `task_form.html`
+
+This HTML template file is responsible for rendering the task creation and editing form in the TODO app. It extends the `base/main.html` template to maintain a consistent look and feel throughout the application.
+
+### Template Structure:
+
+- **Extending 'base/main.html':** This line `{% extends 'base/main.html' %}` indicates that this template extends the `main.html` template, which likely includes the common structure and styles for your web pages, such as headers, footers, and navigation menus.
+
+- **`{% block content %}`:** This template includes a content block defined by `{% block content %}`. This block is used to insert the specific content unique to the task creation and editing form page.
+
+### Page Elements:
+
+- **Container and Row:** The content is enclosed within a Bootstrap container (`<div class="container mt-5">`) and a row (`<div class="row justify-content-center">`). This provides a centered and spaced layout for the page.
+
+- **Page Title:** The page title "Task Form" is displayed as an `<h3>` heading.
+
+- **"Go Back" Button:** The "Go back" button is a Bootstrap button (`<a href="{% url 'tasks' %}" class="btn btn-secondary">`) that allows users to return to the tasks list page. It is generated using `{% url 'tasks' %}` and likely points to the tasks list page URL.
+
+- **Task Form:** The task creation and editing form is implemented as an HTML `<form>` element. It has the HTTP method set to POST. This form is used for submitting task data.
+
+- **CSRF Token:** `{% csrf_token %}` is used to include a CSRF token, which is necessary for form submissions to prevent cross-site request forgery attacks.
+
+- **Form Fields:** The form includes fields for task title, description, and completion status. These fields are generated using `{{ form.field.label_tag }}` and `{{ form.field }}` for each form field. Error messages are displayed below each field if there are validation errors.
+
+- **Submit Button:** The "Submit" button (`<input type="submit" value="Submit" class="btn btn-primary">`) is used to submit the task form. It has Bootstrap styles for a primary button.
+
+### Overall Purpose:
+
+This template serves as the task creation and editing form in the TODO app. It provides users with a user-friendly interface to create or edit tasks by filling out the necessary information and submitting the form.
+
+## `task_list.html`
+
+This HTML template file is responsible for rendering the main task list page of the TODO app. It extends the `base/main.html` template to maintain a consistent look and feel throughout the application.
+
+### Template Structure:
+
+- **Extending 'base/main.html':** This line `{% extends 'base/main.html' %}` indicates that this template extends the `main.html` template, which likely includes the common structure and styles for your web pages, such as headers, footers, and navigation menus.
+
+- **`{% block content %}`:** This template includes a content block defined by `{% block content %}`. This block is used to insert the specific content unique to the main task list page.
+
+### Page Elements:
+
+- **User Greeting or Log In Button:** Depending on whether the user is authenticated, this page displays a greeting message with the user's name and the number of pending tasks or a "Log in" button that allows users to log in to the application.
+
+- **Buttons (Add Task and Log Out):** If the user is authenticated, two buttons are displayed: "Add Task" and "Log Out." These buttons allow the user to create a new task and log out of the application, respectively.
+
+- **Page Title:** The page title "My To-Do List" is displayed as an `<h1>` heading.
+
+- **Search Form:** This form allows users to search for tasks. It includes a text input field for entering search terms and a "Search" button to submit the search.
+
+- **Incomplete Tasks:** This section displays a list of incomplete tasks. For each task, it shows the task title along with "Edit" and "Delete" buttons. The "Edit" button likely allows users to update the task, while the "Delete" button allows users to delete it.
+
+- **Completed Tasks:** This section displays a list of completed tasks. Completed tasks are displayed with a line-through style to indicate that they are completed. Like incomplete tasks, completed tasks also have "Edit" and "Delete" buttons.
+
+### Overall Purpose:
+
+This template serves as the main task list page in the TODO app. It provides an overview of the user's tasks, including both incomplete and completed tasks, and allows users to interact with their tasks by editing or deleting them. Users can also search for specific tasks using the search functionality.
+
+## `task.html`
+
+This HTML template file is responsible for rendering the details of a specific task in the TODO app.
+
+### Page Elements:
+
+- **Task Title:** The task title is displayed using an `<h1>` heading with the text "Task: {{task}}". The `{{task}}` placeholder is likely intended to display the title of the specific task.
+
+### Overall Purpose:
+
+This template serves as a detail view for a single task in the TODO app. It displays the title of the task in a clear and prominent manner. However, it's important to note that this template is quite minimal and may require additional context or information to provide a comprehensive view of the task, such as the task description, completion status, and any associated actions (e.g., editing or deleting the task). Depending on your project requirements, you may want to expand upon this template to include more task details and functionality.
+
 
 
